@@ -8,6 +8,7 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import IndexLocomotives from './locomotives/components/IndexLocomotives'
 
 class App extends Component {
   constructor () {
@@ -40,7 +41,7 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        
+
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
@@ -53,6 +54,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/locomotives' render={() => (
+            <IndexLocomotives flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>
