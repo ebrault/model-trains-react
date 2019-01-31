@@ -37,7 +37,7 @@ class IndexLocomotives extends React.Component {
             <Link to={`/locomotives/${id}`}>{ year }</Link>
           </td>
           <td>
-            <Link to={`/locomotives/${locomotive.id}/update`}>update</Link> | <a href="" onClick={(event) => this.deleteLocomotive(event, locomotive.id)}>delete</a>
+            <Link to={`/locomotives/${locomotive.id}/UpdateLocomotive`}>update</Link> | <a href="" onClick={(event) => this.deleteLocomotive(event, locomotive.id)}>delete</a>
           </td>
         </tr>
       )

@@ -9,6 +9,8 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import IndexLocomotives from './locomotives/components/IndexLocomotives'
+import NewLocomotive from './locomotives/components/NewLocomotive'
+import UpdateLocomotive from './locomotives/components/UpdateLocomotive'
 
 class App extends Component {
   constructor () {
@@ -58,6 +60,12 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/locomotives' render={() => (
             <IndexLocomotives flash={this.flash} user={user} />
           )} />
+          <AuthenticatedRoute user={user} path='/NewLocomotive' render={() => (
+            <NewLocomotive flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/locomotives/:id/UpdateLocomotive' render={() => (
+            <UpdateLocomotive flash={this.flash} user={user} />
+          )}/>
         </main>
       </React.Fragment>
     )
