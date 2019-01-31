@@ -5,7 +5,7 @@ import apiUrl from '../../apiConfig.js'
 import NewLocomotive from './NewLocomotive.js'
 import UpdateLocomotive from './UpdateLocomotive.js'
 
-class indexLocomotives extends React.Component {
+class IndexLocomotives extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,14 +14,14 @@ class indexLocomotives extends React.Component {
     }
   }
   async componentDidMount() {
-    const response = await axios.get(apiUrl + '/locomotives', { headers: { 'Authorization': `Token token=${this.state.user.token}` } } )
-    this.setState( { locomotives: response.data.locomotives } )
+    const response = await axios.get(apiUrl + '/locomotives', {headers: {'Authorization': `Token token=${this.state.user.token}`}})
+    this.setState({locomotives: response.data.locomotives})
   }
 
   async deleteLocomotive(event, locomotiveId) {
     event.preventDefault()
-    await axios.delete(apiUrl + '/locomotives/' + `${locomotiveId}`, { headers: { 'Authorization': `Token token=${this.state.user.token}` } } )
-    this.setState( { locomotives: this.state.locomotives.filter(locomotive => locomotive.id !== locomotiveId ) } )
+    await axios.delete(apiUrl + '/locomotives/' + `${locomotiveId}`, {headers: {'Authorization': `Token token=${this.state.user.token}`}})
+    this.setState({locomotives: this.state.locomotives.filter(locomotive => locomotive.id !== locomotiveId)})
   }
 
   render() {
@@ -31,24 +31,24 @@ class indexLocomotives extends React.Component {
       return (
         <tr key={id} className="table-info">
           <td className="table-primary">
-            <Link to={`/locomotives/${id}`}>{ builder }</Link>
+            <Link to={`/locomtives/${id}`}>{ builder }</Link>
           </td>
           <td className="table-primary">
             <Link to={`/locomotives/${id}`}>{ year }</Link>
           </td>
           <td>
-            <Link to={`/locomotives/${locomotive.id}/update`}>update</Link> | <button className="btn btn-primary"><a href='' onClick={(event) => this.deleteLocomotive(event, locomotive.id)}>Delete</a></button>
+            <Link to={`/locomotives/${locomotive.id}/update`}>update</Link> | <a href="" onClick={(event) => this.deleteLocomotive(event, locomotive.id)}>delete</a>
           </td>
         </tr>
       )
     })
 
     return (
-      <React.fragment>
+      <React.Fragment>
         <div className="IndexLocomotives">
           <h1>Locomotives</h1>
-          <h3 style={{ display: 'inline-block' }}>
-            <Link to={'/NewLocomotive'} className="btn btn-primary">Add Locomotive</Link>
+          <h3 style={{display: 'inline-block'}}>
+            <Link to="/NewLocomotive" className="btn btn-primary">Add Locomotive</Link>
           </h3>
           <table className="table">
             <tbody>
@@ -56,9 +56,9 @@ class indexLocomotives extends React.Component {
             </tbody>
           </table>
         </div>
-      </React.fragment>
+      </React.Fragment>
     )
   }
 }
 
-export default indexLocomotives
+export default IndexLocomotives
